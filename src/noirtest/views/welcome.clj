@@ -6,12 +6,10 @@
        hiccup.core
        hiccup.page-helpers))
 
-(comment
-  (defpage "/welcome" []
-	   (common/layout
-	    [:p "Welcome to noirtest"]))
-  )
 
 (defpage "/*" []
-	 (common/layout
-	  [:p "jissai hayai"]))
+  {
+   :headers {"Content-Type" "text/html; charset=UTF-8"}
+   :body   (common/layout
+	    [:p "実際ハヤイ"])
+   })
