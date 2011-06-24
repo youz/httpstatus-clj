@@ -1,4 +1,3 @@
-;;; -*- coding: utf8n -*-
 (ns noirtest.views.welcome
   (:require [noirtest.views.common :as common]
             [noir.response :as resp])
@@ -6,9 +5,7 @@
        hiccup.core
        hiccup.page-helpers))
 
-
-(def location
-     "http://quiet-fog-825.herokuapp.com/")
+(def location "http://quiet-fog-825.herokuapp.com/")
 
 (def statuses
      {
@@ -21,27 +18,27 @@
       206 "Partial Content"
       300 "Multiple Choices"
       301 {:headers {"Location" location}
-	   :body "Moved Permanently"}
+           :body "Moved Permanently"}
       302 {:headers {"Location" location}
-	   :body "Found"}
+           :body "Found"}
       303 {:headers {"Location" location}
-	   :body "See Other"}
+           :body "See Other"}
       304 {:desc "Not Modified"}
       305 {:headers {"Location" location}
-	   :body "Use Proxy"}
+           :body "Use Proxy"}
       306 "Unused"
       307 {:headers {"Location" location}
-	   :body "Temporary Redirect"}
+           :body "Temporary Redirect"}
       400 "Bad Request"
       401 {:headers {"Www-Authenticate" "Basic realm=\"Fake Realm\""}
-	   :body "Unauthorized"}
+           :body "Unauthorized"}
       402 "Payment Required"
       403 "Forbidden"
       404 "Not Found"
       405 "Method Not Allowed"
       406 "Not Acceptable"
       407 {:headers {"Proxy-Authenticate" "Basic realm=\"Fake Realm\""}
-	   :body "Proxy Authentication Required"}
+           :body "Proxy Authentication Required"}
       408 "Request Timeout"
       409 "Conflict410 Gone"
       411 "Length Required"
@@ -63,25 +60,25 @@
 (defn make-res [code]
   (let [res (statuses code :unknown)]
     (cond (= res :unknown) (make-res 400)
-	  (string? res) {:status code :body res}
-	  (map? res)
-	  (let [head (res :headers)
-		body (res :body)]
-	    (conj {:status code :body body}
-		  (if head {:headers head}))))))
+          (string? res) {:status code :body res}
+          (map? res)
+          (let [head (res :headers)
+                body (res :body)]
+            (conj {:status code :body body}
+                  (if head {:headers head}))))))
 
 (defn site-index []
   {
    :headers {"Content-Type" "text/html; charset=UTF-8"}
    :body (common/layout
-	  [:p "すてーたす てすと"]
-	  [:ul
-	   (map (fn [code]
-		  (let [v (statuses code)
-			desc (if (string? v) v (v :desc (v :body)))]
-		    [:li (link-to (str "/" code) (str code " " desc))]))
-		(sort (keys statuses)))
-	   ])
+          [:h1 "HTTP Statuses"]
+          [:ul
+           (map (fn [code]
+                  (let [v (statuses code)
+                        desc (if (string? v) v (v :desc (v :body)))]
+                    [:li (link-to (str "/" code) (str code " " desc))]))
+                (sort (keys statuses)))
+           ])
    })
 
 (defpage "/" []
