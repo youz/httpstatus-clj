@@ -78,7 +78,9 @@
                         desc (if (string? v) v (v :desc (v :body)))]
                     [:li (link-to (str "/" code) (str code " " desc))]))
                 (sort (keys statuses)))
-           ])
+           ]
+	  [:br]
+	  [:span "powered by " (link-to "http://www.webnoir.org/" "Noir")])
    })
 
 (defpage "/" []
