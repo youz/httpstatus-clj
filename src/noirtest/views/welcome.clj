@@ -71,7 +71,7 @@
   {
    :headers {"Content-Type" "text/html; charset=UTF-8"}
    :body (common/layout
-          [:h1 "HTTP Statuses"]
+          [:h1 "HTTP Statuses Test"]
           [:ul
            (map (fn [code]
                   (let [v (statuses code)
