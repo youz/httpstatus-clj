@@ -1,17 +1,15 @@
-# noirtest
+# httpstatus.clj
 
-A website written in noir. 
+A clone of [httpstat.us](http://httpstat.us) written in noir.
 
 ## Usage
 
-```bash
-lein deps
-lein run
-```
+    lein deps
+    lein run
 
 ## License
 
-Copyright (C) 2011 FIXME
+Copyright (C) 2011 Y.Ushiki
 
 Distributed under the Eclipse Public License, the same as Clojure.
 
