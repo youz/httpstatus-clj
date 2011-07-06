@@ -21,7 +21,8 @@
                 (sort (keys status/statuses)))
            ]
           [:br]
-          [:span "powered by " (link-to "http://www.webnoir.org/" "Noir")])
+          [:p (link-to "https://github.com/youz/httpstatus-clj" "sources")]
+          [:p "powered by " (link-to "http://www.webnoir.org/" "Noir")])
    })
 
 (defpage "/" []
