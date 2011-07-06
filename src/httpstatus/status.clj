@@ -1,33 +1,30 @@
 (ns httpstatus.status
-  (:require [noir.response :as resp])
+  (:require [noir.response :as resp]
+            [noir.content.css :as ncc])
   (use noir.core
        cssgen
-       noir.content.css
        hiccup.core
        hiccup.page-helpers))
-
-(def style
-     [:style {:type "text/css"}
-      (css
-       (rule "body"
-	     dark-background
-	     :padding [:60px :80px]
-	     :font-family "serif")
-       (rule "h1"
-	     emphasis
-	     :font-size :20px
-	     :margin-bottom :20px)
-       (rule "a:link, a:visited"
-	     :text-decoration :none
-	     :color :#aae))
-      ])
 
 (defpartial layout [& content]
   (html5
    [:head
-    [:title "のわーるテスト"]
+    [:title "httpstatus.clj"]
     (include-css "/css/reset.css")
-    style]
+    [:style {:type "text/css"}
+     (css
+      (rule "body"
+            ncc/dark-background
+            :padding [:60px :80px]
+            :font-family "serif")
+      (rule "h1"
+            ncc/emphasis
+            :font-size :20px
+            :margin-bottom :20px)
+      (rule "a:link, a:visited"
+            :text-decoration :none
+            :color :#aae))
+     ]]
    [:body
     [:div#wrapper
      content]]))
@@ -97,7 +94,7 @@
 (defn site-index []
   {
    :headers {"Content-Type" "text/html; charset=UTF-8"}
-   :body (common/layout
+   :body (layout
           [:h1 "HTTP Statuses Test"]
           [:ul
            (map (fn [code]
