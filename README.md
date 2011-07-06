@@ -1,6 +1,6 @@
 # httpstatus.clj
 
-A clone of [httpstat.us](http://httpstat.us) written in noir.
+A clone of [httpstat.us](http://httpstat.us) written in [Noir](http://www.webnoir.org/).
 
 ## Usage
 
