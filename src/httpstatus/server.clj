@@ -1,6 +1,7 @@
 (ns httpstatus.server
-  (:require [noir.server :as server]
-	    [httpstatus.status]))
+  (:require [noir.server :as server]))
+
+(server/load-views "src/httpstatus/views/")
 
 (defn -main [& m]
   (let [mode (keyword (or (first m) :dev))
