@@ -1,5 +1,3 @@
-;;; -*- coding: utf8n -*-
-
 (ns noirtest.views.common
   (use noir.core
        cssgen

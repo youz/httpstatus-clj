@@ -1,1 +1,1 @@
-web: lein run -m noirtest.server prod
+web: lein run -m httpstatus.server prod
