@@ -7,6 +7,9 @@ A clone of [httpstat.us](http://httpstat.us) written in [Noir](http://www.webnoi
     lein deps
     lein run
 
+## Demo
+[running on heroku](http://quiet-fog-825.herokuapp.com/)
+
 ## License
 
 Copyright (C) 2011 Y.Ushiki
