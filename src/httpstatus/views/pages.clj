@@ -9,21 +9,19 @@
 
 
 (defn site-index []
-  {
-   :headers {"Content-Type" "text/html; charset=UTF-8"}
-   :body (common/layout
-          [:h1 "HTTP Statuses Test"]
-          [:ul
-           (map (fn [code]
-                  (let [v (status/statuses code)
-                        desc (if (string? v) v (v :desc (v :body)))]
-                    [:li (link-to (str "/" code) (str code " " desc))]))
-                (sort (keys status/statuses)))
-           ]
-          [:br]
-          [:p (link-to "https://github.com/youz/httpstatus-clj" "sources")]
-          [:p "powered by " (link-to "http://www.webnoir.org/" "Noir")])
-   })
+  (common/layout
+   [:h1 "HTTP Statuses Test"]
+   [:ul
+    (map (fn [code]
+           (let [v (status/statuses code)
+                   desc (if (string? v) v (v :desc (v :body)))]
+             [:li (link-to (str "/" code) (str code " " desc))]))
+         (sort (keys status/statuses)))
+    ]
+   [:br]
+   [:p (link-to "https://github.com/youz/httpstatus-clj" "sources")]
+   [:p "powered by " (link-to "http://www.webnoir.org/" "Noir")])
+  )
 
 (defpage "/" []
   (site-index))

@@ -22,12 +22,15 @@
    ])
 
 (defpartial layout [& content]
-  (html5
-   [:head
-    [:title "httpstatus.clj"]
-    (include-css "/css/reset.css")
-    style
-    ]
-   [:body
-    [:div#wrapper
-     content]]))
+  {
+   :headers {"Content-Type" "text/html; charset=UTF-8"}
+   :body (html5
+          [:head
+           [:title "httpstatus.clj"]
+           (include-css "/css/reset.css")
+           style
+           ]
+          [:body
+           [:div#wrapper
+            content]])
+   })
